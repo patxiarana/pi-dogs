@@ -1,0 +1,11 @@
+.btnSearch{
+    background-color:blue ;
+    padding: 5px 10px ;
+    border-radius: 60px;
+}
+
+.searchBar{
+position: relative;
+top: 80px; left: 550px;
+
+}

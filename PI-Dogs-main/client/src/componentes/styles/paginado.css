@@ -1,0 +1,29 @@
+.paginado{
+ display: flex;
+margin: 0; 
+padding: 0;
+text-align: center;
+top: 70px;
+position: relative;
+left: 50px;
+
+}
+
+.numero{
+    height: 50px;
+    width: 50px;
+    box-shadow: inset 0 0 0 5px  rgb(6, 4, 112);
+    background-color: rgb(3, 68, 19);
+    margin: 0; 
+    padding: 0;
+}
+
+
+   .numero1{
+   color:cadetblue;
+    position: relative;
+    top:15px;
+    margin: 0; 
+   padding: 0;
+    }
+

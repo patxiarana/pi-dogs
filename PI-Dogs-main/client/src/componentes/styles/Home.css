@@ -1,0 +1,69 @@
+
+
+
+
+
+.Body{
+    background-image: url('../img/garras.jpg');
+   }
+    
+
+    
+.select{
+    position:relative;
+    top: -100px;
+    padding: 5px 10px ;
+    border-radius: 60px;
+    margin: 0; 
+    padding: 0;
+    }
+
+
+    .paginado{
+        text-align: center;
+        justify-content: flex-start;
+        margin: 0; 
+        padding: 0;
+        }
+        
+
+        .Dog_map{
+            text-align: center;
+           display:inline-flex;
+           flex-wrap: wrap;
+           margin: 0; 
+           padding: 0;
+           position: relative;
+            left: 100px;
+           }
+
+           .searchBar{
+            text-align : center;
+            margin: 0; 
+            padding: 0;
+            }
+
+            
+.select_value{
+    background-color: blue;
+    
+    }
+
+.searchBar{
+text-align : center;
+
+    }
+    
+.crear-raza{
+ position: relative;
+top: -170px; left: 550px;
+
+ }
+
+ .btnreate{
+   background-color:blue;
+     padding: 5px 10px ;
+    border-radius: 60px;
+ 
+ }
+            

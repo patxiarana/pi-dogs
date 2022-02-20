@@ -1,0 +1,36 @@
+.create{
+    text-align: center;
+    justify-content: space-evenly;
+    background-image: url('../img/OIP.jpg');
+    height: 1000px;
+     
+}
+
+.formulario{
+display:flex;
+flex-direction: column;
+height: 200px;
+width: 250px;
+position: relative;
+left: 500px;    
+margin: 0; 
+padding: 0;
+}
+
+.names{
+ color: black;
+}
+
+
+.btnHome{
+position: relative;
+left:250px;
+}
+.Temperamento{
+color:black;
+}
+.submit{
+    margin: 0; 
+    padding: 0;
+
+}
