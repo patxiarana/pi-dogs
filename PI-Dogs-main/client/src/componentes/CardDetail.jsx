@@ -12,7 +12,7 @@ const DetailCard = (props) => {
           <p className="texto">peso:{props.weight + "kg"}</p>
           <p className="texto">altura:{props.height + "mts"}</p>
           <p className="texto">esperanza de vida:{props.life_span} </p>
-          <img src={props.image}  alt= "imagen dog" className="imgHome" />
+          <img src={props.image}  alt= "imagen dog" className="imgDetail" />
           <NavLink to="/Home">
            <button className="button">Home</button>
             </NavLink>

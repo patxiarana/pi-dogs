@@ -16,23 +16,36 @@ let validate = (input) =>{
    if(input.name.match(ExpRegSoloLetras) === null ){
    error.name = "solo se admiten letras como valores para el nombre";
  } 
-if(!input.height){
-  error.height = "no se admiten campos vacios en height"
+if(!input.height_min){
+  error.height_min = "no se admiten campos vacios en height"
 }
-if(!input.weight.length){
-  error.weight= "no se admiten campos vacios en weight"
+if(!input.height_max){
+  error.height_max = "no se admiten campos vacios en height"
 }
+if(input.height_min > input.height_max){
+  error.height = "el height min no pude ser mayor que el max"
+}
+if(!input.weight_min){
+  error.weight_min= "no se admiten campos vacios en weight"
+}
+if(!input.weight_max){
+  error.weight_max = "no se admiten campos vacios en weight"
+}
+if(input.weight_min > input.weight_max){
+  error.weight = "el weigth min no pude ser mayor que el max"
+}
+
 if(!input.life_span){
   error.life_span = "no se admiten campos vacios en life_span"
 }
 return error;
     }
-const CrateDogs = () =>{
+const  CrateDogs = () =>{
 
 
 const dispatch = useDispatch();
 const TempDog = useSelector((state) => state.temperaments)
-let [input, setInput] = useState({name:'', height:'', weight:'', life_span:'', temperamento:''})
+let [input, setInput] = useState({name:'',height_min:'',height_max:'', weight_min:'',weight_max:'', life_span:'', temperamento:''})
 let [error, setErrors] = useState({});
 
 
@@ -45,13 +58,14 @@ let handelselect = (e) => {
       ...input,
       temperamento:[...input.temperamento,e.target.value]
       })
-     
+      console.log(input.temperamento)
     }
     let handelchange = (e) => {
         e.preventDefault()
         setInput( {...input, [e.target.name]: e.target.value})
         setErrors(validate(
           {...input, [e.target.name]: e.target.value}))
+
     }
     let handelsubmit = (e) => {
     e.preventDefault(e)
@@ -66,7 +80,13 @@ let handelselect = (e) => {
     alert("raza creada")
     }
 
+let buttondelete = (e) =>{
+  setInput({
+    ...input,
+    temperamento:''
+    })
 
+}
 
 return (
 
@@ -74,10 +94,14 @@ return (
 <form onSubmit={handelsubmit} className="formulario">
   <label className="names">Name</label>
   <input name = "name" value={input.name} onChange={handelchange}/>  
-   <label className="names">height</label>
-  <input name="height" value = {input.height}  onChange={handelchange}/>
-  <label className="names">weight</label>
-  <input name="weight" value = {input.weight}  onChange={handelchange}/>
+   <label className="names">height_min</label>
+  <input name="height_min" value = {input.height_min}  onChange={handelchange}/>
+  <label className="names">height_max</label>
+  <input name="height_max" value = {input.height_max}  onChange={handelchange}/>
+ <label className="names">weight_min</label>
+  <input name="weight_min" value = {input.weight_min}  onChange={handelchange}/>
+  <label className="names">weight_max</label>
+  <input name="weight_max" value = {input.weight_max}  onChange={handelchange}/>
    <label className="names">life_span</label>
   <input name="life_span" value = {input.life_span}  onChange={handelchange}/>
    <label className="names">temperamentos</label>
@@ -89,7 +113,7 @@ return (
       ))
       }
    </select>
-    <ul><li className="Temperamento">{input.temperamento + " , "}</li></ul>                   
+    <ul><li className="Temperamento">{input.temperamento + " , "}<button onClick={buttondelete} type = 'reset'>x</button></li></ul>                   
    </div>
       <button type="submit">Create</button>
      </form>

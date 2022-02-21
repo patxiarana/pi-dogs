@@ -1,9 +1,12 @@
+import { bindActionCreators } from "redux";
+
 const initialState = {
   dogs:[],
   detail:[],
   temperaments:[],
   dogsFilter:[],
   dogsOrder:[],
+  filterDT:[]
 }
 
 const rootReducer = (state = initialState, action) => {
@@ -14,6 +17,7 @@ const rootReducer = (state = initialState, action) => {
               dogs: action.payload,
               dogsFilter:action.payload,
               dogsOrder:action.payload,
+              filterDT:action.payload,
             };
             case "GET_DETAIL":
               return {
@@ -123,9 +127,16 @@ const rootReducer = (state = initialState, action) => {
                     detail:[],
                 };
             }
-            }            
+            }       
+         
+            case  "FILTER_DT":
+              const filtradoDT = state.filterDT
+            const filterData = action.payload === "Existente" ?  filtradoDT.filter(e => e.id < 265) : action.payload === "Creado" ? filtradoDT.filter(e => e.id.length > 3) : filtradoDT
                       
-
+              return { ...state,
+                dogs:filterData,
+            };
+          
 
             default: return {...state}
         }

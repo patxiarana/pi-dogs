@@ -35,4 +35,10 @@ top:100px; left:500px;
    left: -500px;
    color: red;
 }
-  
+  .imgDetail{
+    height: 100px;
+    background-size:100px 100px;
+    position:relative;
+    left:20px;
+    
+}

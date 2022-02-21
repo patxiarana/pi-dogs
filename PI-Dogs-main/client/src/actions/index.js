@@ -103,3 +103,12 @@ export function Vaciamiento(id){
     payload: id,
   })
   }
+
+
+  export function FilterDT(payload){
+
+return({
+type: "FILTER_DT",
+payload
+})
+  }

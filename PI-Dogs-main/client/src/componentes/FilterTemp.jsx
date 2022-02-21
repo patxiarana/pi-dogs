@@ -26,6 +26,7 @@ return (
       <div className="bodyfilters">
     <label className="namesfilters">filtrar Temperamentos</label>
     <select onChange ={HandelfilterTemp}>
+    <option value = "todos">FILTRAR</option>
     <option value = "todos">todos</option>
     {
     allTemperaments?.map(t =>(

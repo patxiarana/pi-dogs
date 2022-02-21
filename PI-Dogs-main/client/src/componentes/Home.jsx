@@ -11,6 +11,7 @@ import { OrderAlfabetico } from "../actions/index";
 import { OrderPeso } from "../actions/index";
 import FilterTemps from "./FilterTemp";
 import Logo from '../componentes/img/creado.jpg'
+import { FilterDT } from "../actions/index";
 import "../componentes/styles/Home.css"
 
 const  Home = () => {
@@ -48,6 +49,10 @@ const HandelAlfabetico = (e) =>{
   setOrden(`ordenado ${e.target.value}`)
   
  }
+ const HandelCreatDT = (e) =>{
+dispatch(FilterDT(e.target.value))
+}
+
 
 
 
@@ -77,6 +82,16 @@ return (
        <option value ='descPe'>DescendentePeso</option>
       </select>
      </div>
+     <div className="select">
+     <select onChange={(e) =>  HandelCreatDT(e)} className='select_value'>
+     <option value = "todos">todos</option> 
+       <option value = "Creado">Creado</option> 
+       <option value ="Existente">Existente</option>
+      </select>
+      </div>
+
+
+
      <NavLink to = {"/Home/create"} className='crear-raza'>
      <button className='btnreate'>crearRaza</button>
   </NavLink>
