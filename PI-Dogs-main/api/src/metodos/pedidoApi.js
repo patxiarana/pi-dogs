@@ -3,11 +3,11 @@ const { Router } = require("express");
 const {API_KEY} = process.env;
 const { Dog, Temperamento } = require("../db")
 
-const GetDogs = async () => {
+const DogData = async () => {
 try{   
 const PedidoApi = await axios(`https://api.thedogapi.com/v1/breeds?api_key=${API_KEY}`)
 const DogData =  PedidoApi.data
-
+console.log(DogData )
 const Dogformate = [] 
 DogData.map( D => 
 Dogformate.push(
@@ -27,7 +27,7 @@ console.log(e)
 }
 }
 
-
+DogData() 
 
 const GetDB = async () => {
 try{
