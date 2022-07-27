@@ -1,21 +1,22 @@
 .img {
 
-    background-image: url('../img/perroLogo.jpg');
-    background-color: rgb(190, 178, 178);
+    background-image: url('../img/doghome.jpg');
+    background-color: white;
     height: 700px;
-    background-size:700px 700px;
+    background-size:600px 600px;
     background-repeat: no-repeat;
-    background-position: center top;
+    background-position:center top;
     margin: 0;  
     padding: 0;
     }
     
 
     .home{
-      text-align: center;
-      background-color: rgb(190, 178, 178);
-         margin: 0;  
-        padding: 0;
+      margin: 0;  
+      padding: 0;
+      background-color: white;
+      position: relative;
+      left: -200px;
     }
 
 
@@ -25,10 +26,17 @@
         background-color:blue;
         padding: 5px 10px ;
         border-radius: 60px;
-      }
+        
+        }
 
       .henrydogs{
-        margin: 0;  
-        padding: 0;
-    background-color: rgb(190, 178, 178);
+      position:relative;
+    top: 200px;
+    left:-300px;
+    text-shadow: 
+    3px 3px 1px blue,
+    5px 5px 2px  green,
+    8px 8px 3px black;
+    margin: 0;  
+    padding: 0;
       }

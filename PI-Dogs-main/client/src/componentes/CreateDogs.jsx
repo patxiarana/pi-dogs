@@ -11,8 +11,7 @@ import "../componentes/styles/CrearRaza.css"
 let validate = (input) =>{
   let error = {}
   var ExpRegSoloLetras="^[ a-zA-ZñÑáéíóúÁÉÍÓÚ]+$"; 
-  
-
+ 
    if(input.name.match(ExpRegSoloLetras) === null ){
    error.name = "solo se admiten letras como valores para el nombre";
  } 
@@ -40,6 +39,8 @@ if(!input.life_span){
 }
 return error;
     }
+
+
 const  CrateDogs = () =>{
 
 
@@ -56,10 +57,17 @@ dispatch(GetTemperaments())
 let handelselect = (e) => {
  setInput({
       ...input,
-      temperamento:[...input.temperamento,e.target.value]
-      })
-      console.log(input.temperamento)
+      temperamento:[...input.temperamento,e.target.value].reduce((acc,item) => {
+        if(!acc.includes(item)){
+        acc.push(item)
+        }
+        return acc;
+      },[])
+       })
     }
+
+
+
     let handelchange = (e) => {
         e.preventDefault()
         setInput( {...input, [e.target.name]: e.target.value})
@@ -93,8 +101,8 @@ return (
  <div className="create">
 <form onSubmit={handelsubmit} className="formulario">
   <label className="names">Name</label>
-  <input name = "name" value={input.name} onChange={handelchange}/>  
-   <label className="names">height_min</label>
+  <input name = "name"value={input.name} onChange={handelchange}/>  
+   <label className="names" >height_min</label>
   <input name="height_min" value = {input.height_min}  onChange={handelchange}/>
   <label className="names">height_max</label>
   <input name="height_max" value = {input.height_max}  onChange={handelchange}/>
@@ -109,11 +117,11 @@ return (
     <select onChange ={handelselect}>
      {
      TempDog?.map(t =>(
-            <option value = {t.name}>{t.name}</option>    
-      ))
+            <option value = {t.name}>{t.name}</option>
+            ))
       }
    </select>
-    <ul><li className="Temperamento">{input.temperamento + " , "}<button onClick={buttondelete} type = 'reset'>x</button></li></ul>                   
+    <ul><li className="Temperamento">{input.temperamento + " , " }<button onClick={buttondelete} type = 'reset'>x</button></li></ul>                   
    </div>
       <button type="submit">Create</button>
      </form>

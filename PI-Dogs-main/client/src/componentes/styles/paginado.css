@@ -5,10 +5,9 @@ padding: 0;
 text-align: center;
 top: 70px;
 position: relative;
-left: 50px;
+left: 40px;
 
 }
-
 .numero{
     height: 50px;
     width: 50px;
@@ -17,7 +16,9 @@ left: 50px;
     margin: 0; 
     padding: 0;
 }
-
+.numero:hover{
+    background-color: green;
+}
 
    .numero1{
    color:cadetblue;
@@ -25,5 +26,9 @@ left: 50px;
     top:15px;
     margin: 0; 
    padding: 0;
+    }
+
+    .numero1:hover{
+        background-color: green;
     }
 

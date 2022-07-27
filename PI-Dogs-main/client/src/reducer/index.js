@@ -1,4 +1,4 @@
-import { bindActionCreators } from "redux";
+
 
 const initialState = {
   dogs:[],
@@ -6,7 +6,8 @@ const initialState = {
   temperaments:[],
   dogsFilter:[],
   dogsOrder:[],
-  filterDT:[]
+  filterDT:[],
+  reset:[]
 }
 
 const rootReducer = (state = initialState, action) => {
@@ -18,6 +19,7 @@ const rootReducer = (state = initialState, action) => {
               dogsFilter:action.payload,
               dogsOrder:action.payload,
               filterDT:action.payload,
+              reset:action.payload,
             };
             case "GET_DETAIL":
               return {
@@ -44,7 +46,7 @@ const rootReducer = (state = initialState, action) => {
                 case   "ORDEN_ALFABETICO":
                   let AUXorderAL = []
                   let orderAL = action.payload === 'ascAL' ?
-                  AUXorderAL = state.dogsOrder.sort(function(a,b){
+                  AUXorderAL = state.dogs.sort(function(a,b){
                       if(a.name > b.name){
                           return 1;
                       }
@@ -54,7 +56,7 @@ const rootReducer = (state = initialState, action) => {
                       return 0;
                   })
                   :
-                  AUXorderAL = state.dogsOrder.sort(function(a,b){
+                  AUXorderAL = state.dogs.sort(function(a,b){
                     if(a.name > b.name){
                      return -1
                       } 
@@ -106,7 +108,8 @@ const rootReducer = (state = initialState, action) => {
                       eStadoArtificial.push(
                       { 
                         id: e.id,
-                      name: e.name,
+            
+                        name: e.name,
                      image: e.image,
                     temperamento2:e.Temperamentos ? e.Temperamentos.map(e => e.name) : e.temperamento1 ? e.temperamento1.split(',') : null ,
                     weight: e.weight
@@ -136,6 +139,14 @@ const rootReducer = (state = initialState, action) => {
               return { ...state,
                 dogs:filterData,
             };
+
+            case "RESET":
+            
+            return{...state,
+            dogs:state.reset}
+      
+
+
           
 
             default: return {...state}

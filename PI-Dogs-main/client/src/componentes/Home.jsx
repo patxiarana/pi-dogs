@@ -13,6 +13,7 @@ import FilterTemps from "./FilterTemp";
 import Logo from '../componentes/img/creado.jpg'
 import { FilterDT } from "../actions/index";
 import "../componentes/styles/Home.css"
+import { Reset } from "../actions/index";
 
 const  Home = () => {
 
@@ -41,26 +42,32 @@ dispatch(getAllDogs())
 const HandelAlfabetico = (e) =>{
   dispatch(OrderAlfabetico(e.target.value))
   setPaginaActual(1)
-  setOrden(`ordenado ${e.target.value}`)
+ setOrden(`ordenado ${e.target.value}`)
+  //console.log(orden)
  }
  const HandelOrdenPeso = (e) =>{
   dispatch(OrderPeso(e.target.value))
-  setPaginaActual(1)
+ setPaginaActual(1)
   setOrden(`ordenado ${e.target.value}`)
   
  }
  const HandelCreatDT = (e) =>{
 dispatch(FilterDT(e.target.value))
+
 }
 
-
+const HandelReset = (e) =>{
+  dispatch(Reset())
+}
 
 
 return (
     <React.StrictMode>
 
 <div className="Body">
-<FilterTemps/>
+<FilterTemps className = 'FilterTemps'/>
+
+
 <PaginadoComp className= 'paginado' 
     DogPorPagina={DogPorPagina}
      allDogs={allDogs.length}
@@ -84,11 +91,12 @@ return (
      </div>
      <div className="select">
      <select onChange={(e) =>  HandelCreatDT(e)} className='select_value'>
-     <option value = "todos">todos</option> 
        <option value = "Creado">Creado</option> 
        <option value ="Existente">Existente</option>
       </select>
       </div>
+
+      <button onClick={e => HandelReset(e)} className='reset'>Ver todos</button>
 
 
 
@@ -96,9 +104,11 @@ return (
      <button className='btnreate'>crearRaza</button>
   </NavLink>
     <div className='Dog_map'>
-     {DogActual?.map((e) => (
 
-             <HomeCard  
+      {
+     DogActual &&
+      DogActual.map((e) => ( 
+            <HomeCard  
              id = {e.id}
              key= {e.id}
              name ={e.name}
@@ -106,8 +116,9 @@ return (
             image = {e.image ? e.image : Logo }
             weight = {e.weight}
              />
-             
-             ))}
+            ))}
+
+          
   </div>
   </div>
   </React.StrictMode>

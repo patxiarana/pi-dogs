@@ -17,8 +17,6 @@ const dispatch = useDispatch()
  const DetailDog = useSelector((state) => state.detail)
  const  params  = props.match.params.id
  
- console.log(params)
- 
  useEffect(() => {
 dispatch(getDetail(params))
 dispatch( Vaciamiento(params))
@@ -28,7 +26,9 @@ return (
   <React.StrictMode>
 <div className="cuerpo">
 <div className='CardSpace'>
-        {DetailDog?.map((e) => (
+        {
+        DetailDog ?
+        DetailDog.map((e) => (
           <DetailCard 
         id = {e.id}
         key= {e.id}
@@ -39,7 +39,9 @@ return (
        life_span = {e.life_span}
        height = {e.height}
         />
-        ))}
+        ))  
+        :  <p>cargando...</p>
+}
 </div>
 </div>
  </React.StrictMode>

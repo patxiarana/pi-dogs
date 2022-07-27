@@ -2,7 +2,7 @@
     text-align: center;
     justify-content: space-evenly;
     background-image: url('../img/OIP.jpg');
-    height: 1000px;
+    height: 660px;
      
 }
 
@@ -18,13 +18,19 @@ padding: 0;
 }
 
 .names{
- color: black;
+ color: rgb(16, 18, 129);
+ background-color: green;
 }
 
 
 .btnHome{
 position: relative;
 left:250px;
+background-color:blue;
+padding: 5px 10px ;
+ border-radius: 60px;
+ margin: 0; 
+
 }
 .Temperamento{
 color:black;

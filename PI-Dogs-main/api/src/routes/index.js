@@ -19,16 +19,14 @@ res.status(404)
 
 }})
 
-router.get('/dogs/name', async (req,res) => {
-  const  name  = req.query.name;
-  if(name){
+router.get('/dogs/:name', async (req,res) => {
+  const  name  = req.params.name;
+  
     const dogsName = await AllHome()
-    let dogFilter =  dogsName.filter(d => d.name === name )
-    res.json(dogFilter)
-    }else{
-      res.status(404).json({ "msg": "raza no encotrada"})
-    }
-
+    const auxname = name.toLocaleLowerCase()
+    let dogFilter =  dogsName.filter(d => d.name.toLocaleLowerCase() === auxname )
+    dogFilter.length > 0 ? res.json(dogFilter) :
+    res.status(404).json({ "msg": "raza no encotrada"})
 });
 router.get('/temperament', async (req,res) =>{
 try{
@@ -38,16 +36,17 @@ res.send(TemperamentosDog )
   res.status(404)
 }
 })
-router.get("/dogs/:id", async (req, res) => {
+router.get("/dog/:id", async (req, res) => {
   const id = req.params.id;
   const DogDetail = await allDogs();
   if (id) {
     let DogId = DogDetail.filter((el) => el.id == id);
     DogId.length
-      ? res.status(200).json(DogId )
+      ? res.status(200).json(DogId)
       : res.status(404).send("Dog no encontrado");
   }
 })
+
 const {Dog, Temperamento} = require('../db')
 
 router.post('/dog', async (req,res) =>{
@@ -71,7 +70,7 @@ let tempDog = await Temperamento.findAll({
 } catch(e){
 res.send(404)
 }
-} )
+})
 
 
 

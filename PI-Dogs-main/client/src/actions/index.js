@@ -3,28 +3,31 @@ import axios from 'axios';
 
 
 export  function  getAllDogs() {
+  
     return async function (dispatch) {
+   try{
       var json = await axios.get("http://localhost:3001/dogs");
       return dispatch({
         type: "GET_HOME",
         payload: json.data,
       });
-   
-    };
-     
+      }catch(e){
+        console.log(e)
+      }
+}
   }
 
 
   export function getDetail(id) {
-  return async function ( dispatch) {
-  var json = await axios.get("http://localhost:3001/dogs/"+ id)
-   return dispatch({
-  type: "GET_DETAIL",
-  payload: json.data,
-  });
-};
-}
-
+    console.log(id)
+    return async function ( dispatch) {
+    var json = await axios.get("http://localhost:3001/dog/"+ id)
+     return dispatch({
+    type: "GET_DETAIL",
+    payload: json.data,
+    });
+  };
+  }
 
 export function CreateDog(Input){
   return async function (dispatch){
@@ -57,7 +60,7 @@ export function GetTemperaments(){
 
 export function SearchName(name){
   return async function (dispatch) {
-    var json = await axios.get("http://localhost:3001/dogs/name?name="+ name);
+    var json = await axios.get("http://localhost:3001/dogs/"+ name);
     return dispatch({
       type: "GET_NAME",
       payload: json.data,
@@ -112,3 +115,12 @@ type: "FILTER_DT",
 payload
 })
   }
+
+  
+  export function Reset(payload){
+
+    return({
+    type: "RESET",
+    payload
+    })
+      }

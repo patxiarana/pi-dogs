@@ -3,11 +3,11 @@ const { Router } = require("express");
 const {API_KEY} = process.env;
 const { Dog, Temperamento } = require("../db")
 
-const DogData = async () => {
+const GetDogs = async () => {
 try{   
 const PedidoApi = await axios(`https://api.thedogapi.com/v1/breeds?api_key=${API_KEY}`)
 const DogData =  PedidoApi.data
-console.log(DogData )
+console.log(DogData)
 const Dogformate = [] 
 DogData.map( D => 
 Dogformate.push(
@@ -27,11 +27,11 @@ console.log(e)
 }
 }
 
-DogData() 
+
 
 const GetDB = async () => {
 try{
-   const pokeDB = await Dog.findAll({
+   const dogDB = await Dog.findAll({
           include: {
             model: Temperamento,
             attributes: ["name"],
@@ -40,22 +40,22 @@ try{
             },
           },
         });
-       return pokeDB;
+       return dogDB;
   
 }catch(e){
 console.log(e)
 }
 }
 
-
 const allDogs = async () =>{
  
     const DogApi = await GetDogs()
-    const DogDB = await GetDB()
+  const DogDB = await GetDB()
      const Dogall = [...DogApi,...DogDB]
     
-      return Dogall
-
+  
+   return Dogall;
+   
 }
 
 

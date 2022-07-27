@@ -9,6 +9,7 @@ import "../componentes/styles/filterTemp.css"
 const FilterTemps = () => {
 const dispatch = useDispatch()
 const allTemperaments = useSelector((state) => state.temperaments)
+
 useEffect(() =>{
  dispatch(GetTemperaments())
 },[])   
