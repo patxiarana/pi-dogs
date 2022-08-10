@@ -141,9 +141,10 @@ const rootReducer = (state = initialState, action) => {
             };
 
             case "RESET":
-            
+            const reset = state.reset
             return{...state,
-            dogs:state.reset}
+            dogs:reset,
+          }
       
 
 

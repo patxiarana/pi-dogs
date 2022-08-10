@@ -121,6 +121,6 @@ payload
 
     return({
     type: "RESET",
-    payload
+    payload:payload
     })
       }

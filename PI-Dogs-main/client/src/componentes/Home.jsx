@@ -95,9 +95,9 @@ return (
        <option value ="Existente">Existente</option>
       </select>
       </div>
-
-      <button onClick={e => HandelReset(e)} className='reset'>Ver todos</button>
-
+        <div>
+      <button  onClick={e => HandelReset(e)} className='reset'>Ver todos</button>
+      </div>
 
 
      <NavLink to = {"/Home/create"} className='crear-raza'>
